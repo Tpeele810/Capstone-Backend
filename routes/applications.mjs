@@ -14,3 +14,13 @@ router.get('/', async (req, res)=>{
         console.log(err)
     }
 })
+
+//Post route
+router.post('/', async (req,res)=>{
+    try{
+        await Application.create(req.body)
+        res.json(Application)
+    }catch(error){
+        console.log(error)
+    }
+})
