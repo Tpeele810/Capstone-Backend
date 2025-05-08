@@ -1,9 +1,10 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import Application from '../models/jobApplication.mjs'
+import { requireAuth } from '../middleware/auth.js';
 
 const router = express.Router()
-
+router.use(requireAuth); // protect all below
 
 //Get route
 router.get('/', async (req, res)=>{

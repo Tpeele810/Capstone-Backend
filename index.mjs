@@ -6,12 +6,14 @@ import cors from 'cors'
 //import Schema
 import Application from './models/jobApplication.mjs'
 
+
+
 const app = express()
 const port = process.env.PORT || 3000
 
 //import routes
 import applications from './routes/applications.mjs'
-
+import authRoutes from './routes/auth.mjs';
 //middleware
 
 app.use(express.urlencoded())
@@ -19,12 +21,14 @@ app.use(express.json())
 app.use(cors())
 
 
-app.use('/applications', applications)
 
+app.use('/applications', applications)
+app.use('/auth', authRoutes)
 
 //mogoose
 mongoose.connect(process.env.ATLAS_URI)
-      
+
+
 
 //routes
 
