@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import Application from '../models/jobApplication.mjs'
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth } from '../middleware/auth.mjs';
 
 const router = express.Router()
 router.use(requireAuth); // protect all below
