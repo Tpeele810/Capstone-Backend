@@ -1,0 +1,43 @@
+{"Applications":[
+    {
+      "company": "Google",
+      "position": "Frontend Engineer",
+      "status": "Applied",
+      "dateApplied": "2025-04-01",
+      "jobLink": "https://careers.google.com/jobs/frontend-engineer",
+      "notes": "Submitted via LinkedIn. Waiting to hear back."
+    },
+    {
+      "company": "Amazon",
+      "position": "Backend Developer",
+      "status": "Interviewing",
+      "dateApplied": "2025-03-28",
+      "jobLink": "https://amazon.jobs/en/jobs/12345/backend-developer",
+      "notes": "Had phone screen, waiting on technical interview."
+    },
+    {
+      "company": "Meta",
+      "position": "Full Stack Developer",
+      "status": "Offer",
+      "dateApplied": "2025-03-15",
+      "jobLink": "https://www.metacareers.com/job/456/full-stack-developer",
+      "notes": "Received offer, negotiating salary."
+    },
+    {
+      "company": "Spotify",
+      "position": "Software Engineer Intern",
+      "status": "Rejected",
+      "dateApplied": "2025-03-10",
+      "jobLink": "https://www.spotifyjobs.com/job/software-engineer-intern",
+      "notes": "Got rejection email after final interview."
+    },
+    {
+      "company": "Netflix",
+      "position": "DevOps Engineer",
+      "status": "Applied",
+      "dateApplied": "2025-04-05",
+      "jobLink": "https://jobs.netflix.com/devops-engineer",
+      "notes": "Applied through company website."
+    }
+  ]
+}
