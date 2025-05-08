@@ -24,3 +24,13 @@ router.post('/', async (req,res)=>{
         console.log(error)
     }
 })
+
+//get route by ID
+router.get('/:id', async (req, res)=>{
+    try{
+        const application = await Application.findById(req.params.id)
+        res.json(application)
+    }catch (error){
+        console.log(error)
+    }
+})
