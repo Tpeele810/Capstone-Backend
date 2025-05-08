@@ -34,3 +34,13 @@ router.get('/:id', async (req, res)=>{
         console.log(error)
     }
 })
+
+//put route
+router.put('/:id', async (req, res)=> {
+    try{
+        await Application.findByIdAndUpdate(req.params.id, req.body)
+        res.json(Application)
+    }catch (error){
+        console.log(error)
+    }
+})
