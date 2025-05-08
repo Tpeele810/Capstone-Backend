@@ -44,3 +44,15 @@ router.put('/:id', async (req, res)=> {
         console.log(error)
     }
 })
+
+//delete route
+router.delete('/:id', async (req, res)=>{
+    try {
+        await Application.findByIdAndDelete(req.params.id)
+        res.json(Application)
+    }catch(error){
+        console.log(error)
+    }
+})
+
+export default router
