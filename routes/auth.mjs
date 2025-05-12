@@ -12,6 +12,7 @@ router.post('/register', async (req, res) => {
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1d' });
     res.status(201).json({ token });
   } catch (err) {
+    console.error('Register Error', err.message)
     res.status(400).json({ error: 'Username already taken or invalid input.' });
   }
 });
@@ -19,10 +20,13 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
+
   const user = await User.findOne({ username });
-  if (!user || !(await user.comparePassword(password))) {
-    return res.status(401).json({ error: 'Invalid credentials' });
-  }
+  if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
+
   const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1d' });
   res.json({ token });
 });
