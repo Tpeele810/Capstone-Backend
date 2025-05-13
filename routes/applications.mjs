@@ -17,14 +17,17 @@ router.get('/', async (req, res)=>{
 })
 
 //Post route
-router.post('/', async (req,res)=>{
-    try{
-        await Application.create(req.body)
-        res.json(Application)
-    }catch(error){
-        console.log(error)
+router.post('/', async (req, res) => {
+    try {
+      req.body.user = req.user._id;
+      const newApp = new Application(req.body);
+      const saved = await newApp.save();
+      res.status(201).json(saved);
+    } catch (err) {
+      console.error('Failed to create application:', err);
+      res.status(400).json({ error: 'Invalid application data' });
     }
-})
+  });
 
 //get route by ID
 router.get('/:id', async (req, res)=>{
