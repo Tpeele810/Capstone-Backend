@@ -39,14 +39,16 @@ router.post('/', async (req, res) => {
 //     }
 // })
 
-router.get('/', requireAuth, async (req, res) => {
+router.get('/:id', requireAuth, async (req, res) => {
   try {
-    // Only fetch applications belonging to the logged-in user
-    const applications = await Application.find({ user: req.user._id });
-    res.json(applications);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error fetching applications' });
+    const application = await Application.findOne({ _id: req.params.id, user: req.user._id });
+    if (!application) {
+      return res.status(404).json({ error: 'Application not found' });
+    }
+    res.json(application);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
