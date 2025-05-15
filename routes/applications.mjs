@@ -7,14 +7,25 @@ const router = express.Router()
 router.use(requireAuth); // protect all below
 
 //Get route
-router.get('/', async (req, res)=>{
-    try{
-        const applications = await Application.find()
-        res.json(applications)
-    }catch(err){
-        console.log(err)
-    }
-})
+// router.get('/', async (req, res)=>{
+//     try{
+//         const applications = await Application.find()
+//         res.json(applications)
+//     }catch(err){
+//         console.log(err)
+//     }
+// })
+
+router.get('/', requireAuth, async (req, res) => {
+  try {
+    // Only return applications where user === logged-in user's id
+    const apps = await Application.find({ user: req.user._id });
+    res.json(apps);
+  } catch (err) {
+    console.error('Error fetching user apps:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 //Post route
 router.post('/', async (req, res) => {
