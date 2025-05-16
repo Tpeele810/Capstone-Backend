@@ -33,3 +33,6 @@ GET	    /applications	    Get all applications
 POST	/applications	    Add a new application
 PUT	    /applications/:id	Update an application
 DELETE	/applications/:id	Delete an application
+
+## Frontend link
+https://capstone-frontend-wjpw.onrender.com/
